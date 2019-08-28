@@ -1,7 +1,7 @@
 {
   "dependencies": {
-    "node-exp-mvc": "latest",
+    "body-parser": "latest",
     "express-fileupload": "latest",
-    "body-parser": "latest"
+    "node-exp-mvc": "latest"
   }
 }
