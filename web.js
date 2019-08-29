@@ -1,12 +1,18 @@
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) kkChan(694643393@qq.com). All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+'use strict'
+
 require('node-type-extensions');
 
 const uuid = require("node-uuid");
 const session = require('express-session');
 const fileupload = require("express-fileupload");
-const bodyParser = require("body-parser");
 const expressmvc = require('node-exp-mvc');
 
-const hook = require('./hook');
+const mvchandler = require('./handler');
 const options = require('./web.json');
 const mvc = new expressmvc(options, false);
 
@@ -18,10 +24,8 @@ mvc.use(session({
         maxAge: 60 * 1000 * 30
     }
 }));
-mvc.use(bodyParser.urlencoded({
-    extended: false
-}));
-mvc.use([fileupload(), hook]);
+mvc.use([fileupload(), mvchandler]);
+mvc.setPages(options.pages);
 mvc.catch();
 
 options.resources && mvc.static(options.resources.static);

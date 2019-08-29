@@ -26,8 +26,8 @@
     "base": "/",
     "pattern": "?ver=20190423",
     "static": {
-      "assets": "/assets/*.:format",
-      "favicon.ico": "/favicon.ico"
+      "/assets": "./assets",
+      "/favicon.ico": "./favicon.ico"
     }
   },
   "routes": {
